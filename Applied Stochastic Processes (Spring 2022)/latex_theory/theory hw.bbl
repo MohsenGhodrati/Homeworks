@@ -18,7 +18,7 @@
 \providecommand{\issn}[1]{\rl{\setlatin #1}}\else
 \providecommand{\issn}{\begingroup \urlstyle{rm}\Url}\fi
 \providecommand\noopsort[1]{}
-\begin{thebibliography}{Wikb}
+\begin{thebibliography}{And01}
 
 \begin{LTRbibitems}
 \resetlatinfont
@@ -32,12 +32,40 @@ Dr.~K. Alishahi.
 
 \begin{LTRbibitems}
 \resetlatinfont
+\bibitem[And01]{andel}
+Jiri Andel.
+\newblock {\em Mathematics of chance}.
+\newblock 2001.
+
+\end{LTRbibitems}
+
+\begin{LTRbibitems}
+\resetlatinfont
+\bibitem[Kam]{max_Gaussian_bounds}
+Gautam Kamath.
+\newblock Bounds on the expectation of the maximum of samples from a gaussian.
+\newblock URL: \url{http://www.gautamkamath.com/writings/gaussian_max.pdf}.
+
+\end{LTRbibitems}
+
+\begin{LTRbibitems}
+\resetlatinfont
 \bibitem[mat]{stick_countor}
 math.stackexchange.com.
 \newblock If a 1 meter rope is cut at two uniformly randomly chosen points,
   what is the average length of the smallest piece?
 \newblock URL:
   \url{https://math.stackexchange.com/questions/13959/if-a-1-meter-rope-is-cut-at-two-uniformly-randomly-chosen-points-what-is-the-av}.
+
+\end{LTRbibitems}
+
+\begin{LTRbibitems}
+\resetlatinfont
+\bibitem[Sci]{ellipk}
+Scipy.
+\newblock Elliptic integral function.
+\newblock URL:
+  \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.ellipk.html}.
 
 \end{LTRbibitems}
 

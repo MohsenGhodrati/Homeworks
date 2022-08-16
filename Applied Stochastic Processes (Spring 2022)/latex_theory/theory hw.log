@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.11.10)  12 AUG 2022 21:11
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.11.10)  16 AUG 2022 13:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1729,11 +1729,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
 
 [5]
-
-LaTeX Warning: Citation `andel' on page 6 undefined on input line 470.
-
 LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/n' will be
 (Font)              scaled to size 5.0pt on input line 480.
+
+
+LaTeX Warning: Command \. invalid in math mode on input line 531.
+
+Missing character: There is no ̇ ("307) in font cmmi10!
+
+LaTeX Warning: Command \. invalid in math mode on input line 552.
+
+Missing character: There is no ̇ ("307) in font cmmi10!
 File: images//logo.png Graphic file (type bmp)
 <images//logo.png>
 
@@ -1757,16 +1763,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
 
 [7]
-
-LaTeX Warning: Command \. invalid in math mode on input line 682.
-
-Missing character: There is no ̇ ("307) in font cmmi10!
-
-LaTeX Warning: Command \. invalid in math mode on input line 738.
-
-Missing character: There is no ̇ ("307) in font cmmi10!
 File: images//logo.png Graphic file (type bmp)
 <images//logo.png>
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 26.35687pt, for example:
@@ -1788,10 +1787,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
 
 [9]
-LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 917.
-LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/it' will be
-(Font)              scaled to size 5.0pt on input line 917.
 File: images//logo.png Graphic file (type bmp)
 <images//logo.png>
 
@@ -1804,8 +1799,114 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
 
 [10]
+File: images//6.png Graphic file (type bmp)
+<images//6.png>
+LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1063.
+File: images//6_b.png Graphic file (type bmp)
+<images//6_b.png>
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
 
-LaTeX Warning: Command \. invalid in math mode on input line 1027.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[11]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[12]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[13]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[14]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[15]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[16]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[17]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[18]
+
+LaTeX Warning: Command \. invalid in math mode on input line 1632.
+
+Missing character: There is no ̇ ("307) in font cmmi10!
+
+LaTeX Warning: Command \. invalid in math mode on input line 1688.
 
 Missing character: There is no ̇ ("307) in font cmmi10!
 File: images//logo.png Graphic file (type bmp)
@@ -1818,13 +1919,56 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
 
-[11] (./theory hw.bbl
+[19]
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[20]
+LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/it' will be
+(Font)              scaled to size 7.0pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/it' will be
+(Font)              scaled to size 5.0pt on input line 1867.
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[21]
+
+LaTeX Warning: Command \. invalid in math mode on input line 1977.
+
+Missing character: There is no ̇ ("307) in font cmmi10!
+File: images//logo.png Graphic file (type bmp)
+<images//logo.png>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.35687pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.35687pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
+
+[22] (./theory hw.bbl
 LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/m/n' will be
 (Font)              scaled to size 14.4pt on input line 21.
 LaTeX Font Info:    Font shape `TU/HMXNiloofar(0)/b/n' will be
 (Font)              scaled to size 14.4pt on input line 21.
 
-Underfull \hbox (badness 1990) in paragraph at lines 47--51
+Underfull \hbox (badness 1540) in paragraph at lines 75--79
 [][]\TU/lmroman10-regular(0)/m/n/10 Wikipedia.  Bertrand paradox.  URL: [][]$[]
 [][][][] [] [] [] [][] [] [][][][][][][][][] [] [][][] [] [][][][] [] [][][][][
 ][][][] [] [][][][][][][] []$[][]
@@ -1842,23 +1986,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-14.35687pt}.
 
-[12] (./theory hw.aux)
+[23] (./theory hw.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `"theory hw".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 34958 strings out of 476919
- 716698 string characters out of 5825423
- 1158808 words of memory out of 5000000
- 54088 multiletter control sequences out of 15000+600000
- 405849 words of font info for 81 fonts, out of 8000000 for 9000
+ 34990 strings out of 476919
+ 717276 string characters out of 5825423
+ 1170808 words of memory out of 5000000
+ 54116 multiletter control sequences out of 15000+600000
+ 405865 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  111i,14n,117p,4859b,1051s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on theory hw.pdf (12 pages).
+Output written on theory hw.pdf (23 pages).

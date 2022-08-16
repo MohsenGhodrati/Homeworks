@@ -492,6 +492,17 @@ $X_1, \dots, X_i$،
 $i$ام
 قرار بگیرد و بقیه مقادیر با هر ترتیب دلخواهی قرار داشته باشند. یعنی
 $Pr[I_i=1] = \dfrac{1}{i}$.
+در واقع پیشامد‌های آینده در لحظه مستقل از پیشامدهای گذشته هستند. یعنی
+
+\begin{center}
+$
+Pr[I_i\ |\ X_1, \dots, X_n] = Pr[I_i\ |\ X_1,\dots ,X_i]
+$
+\bigbreak
+$
+Pr[I_i=1\ |\ X_1=x_1, \dots, X_n=x_n] = Pr[I_i=1\ |\ X_1=x_1, \dots, X_i=x_i] = \dfrac{1 \times (i-1)!}{i!} = \dfrac{1}{i}
+$
+\end{center}
 
 اکنون توجه می‌کنیم که
 
@@ -501,14 +512,141 @@ R_n = \sum_{i=1}^{n} I_i
 \implies
 E[R_n] = E[I_1 + \dots + I_n] 
 = E[I_1] + \dots + E[I_n]
+$
+\bigbreak
+$
 = Pr[I_1=1] + \dots + Pr[I_n=1]
 = \sum_{i=1}^{n} \dfrac{1}{i}
 $
 \end{center}
 
+طبق
+\cite{andel}،
+اگر بخواهیم تقریبی برای
+$E[R_n]$
+بر اساس ثابت اویلر ($\gamma$) بدهیم، داریم:
+
+\begin{center}
+$
+E[R_n] = \log n + \dfrac{1}{2n} + \dfrac{1}{12n^2} + \gamma + O(n^{-4})\..
+$
+\end{center}
+
 \vspace*{1in}
 
+اگر تعریف کنیم
 
+\begin{center}
+$
+Y_n := \max \{ X_1,\dots ,X_n \},
+\quad X_i \overset{iid}{\sim} \mathcal{N}(0, 1),
+$
+\end{center}
+
+آنگاه طبق
+\cite{max_Gaussian_bounds}،
+ثابت می‌شود
+
+\begin{center}
+$
+E[Y_n] = \theta (\sqrt{\log n})\..
+$
+\end{center}
+
+در  واقع در
+\cite{max_Gaussian_bounds}
+نامساوی‌های زیر اثبات شده است که به ازای
+$X_i$های
+مستقل هم‌توزیع از یک توزیع نرمال با میانگین صفر و واریانس
+$\sigma^2$
+نمونه‌گیری شده‌اند.
+
+\begin{center}
+$
+\dfrac{1}{\sqrt{\pi \log 2}} \sigma \sqrt{\log n} \leq E[Y_n] \leq \sqrt{2} \sigma \sqrt{\log n}
+$
+\end{center}
+
+اثبات نامساوی کران پایین جزییات زیادی دارد که به طور کامل در
+\cite{max_Gaussian_bounds}
+ذکر شده است. تنها نامساوی کران بالا را اثبات می‌کنیم. به ازای
+$t\geq 0$
+ثابت، طبق نامساوی ینسن به ازای تابع محدب
+$\exp: \mathbb{R} \rightarrow \mathbb{R}_{++}$
+داریم:
+
+\begin{center}
+$
+\exp(t E[Y_n]) \leq E[\exp(tY_n)]
+= E[\exp(\max_{i \in \{1,\dots, n\}} tX_i)]
+= E[\max_{i \in \{1,\dots, n\}} \exp(tX_i)]
+$
+\end{center}
+
+اما متغیر تصادفی اندیکاتور
+$I_{X_i}$
+را به شکل زیر تعریف کنیم، نتیجه می‌شود:
+
+\begin{center}
+$
+I_{X_i} = \begin{cases}
+1 & X_i = Y_n\\
+0 & X_i \neq Y_n
+\end{cases} \qquad \implies \qquad
+\max_{i \in \{1,\dots, n\}} \exp (tX_i)
+= I_{X_1} \exp (tX_1) + \dots + I_{X_n} \exp (tX_n)
+$
+\end{center}
+
+اما واضح است که
+
+\begin{center}
+$
+E[I_{X_i}\exp(tX_i)] \leq E[\exp(tX_i)]
+$
+\end{center}
+
+پس از ترکیب روابط بالا و استفاده از خاصیت خطی امید ریاضی، خواهیم داشت:
+
+\begin{center}
+$
+\exp(tE[Y_n]) \leq 
+E[\max_{i \in \{1,\dots, n\}} \exp(tX_i)]
+= E[I_{X_1} \exp (tX_1) + \dots + I_{X_n} \exp (tX_n)]
+$
+\bigbreak
+$
+= E[I_{X_1} \exp (tX_1)] + \dots + E[I_{X_n} \exp (tX_n)]
+\leq E[tX_1] + \dots + E[tX_n]
+= nE[tX]
+$
+\end{center}
+
+اکنون به ازای متغیر تصادفی نرمال
+$X \sim \mathcal{N}(\mu, \sigma^2)$،
+تابع مولد گشتاور
+$E[\exp(tX)]$
+عبارت است از
+$\exp(\mu t + \dfrac{t^2 \sigma^2}{2})$.
+لذا
+
+\begin{center}
+$
+\exp (tE[Y_n]) \leq n\exp(\dfrac{t^2}{2})
+\quad \implies \quad
+tE[Y_n] \leq \log n + \dfrac{t^2}{2}
+$
+\end{center}
+
+که با جایگذاری
+$t:=\sqrt{2\log n}$
+نامساوی کران بالا را نتیجه می‌دهد:
+
+\begin{center}
+$
+E[Y_n] \leq \sqrt{2}\sqrt{\log n}
+$
+\end{center}
 
 \end{حل}
 
@@ -614,6 +752,818 @@ $r-x_{\theta}$
 
 
 \end{حل}
+
+
+% ------------------------------------------------------
+% problem 6
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+
+مساله را در حالت کلی‌تر که سکه مورد نظر یک بیضی باشد حل می‌کنیم. فرض کنیم شعاع‌های بیضی مقادیر
+$\alpha$
+و
+$\beta$
+هستند که
+$\beta \leq \alpha$.
+هم‌چنین فرض کنیم مرکز بیضی مورد نظر به صورت
+$(C_X,\ C_Y)$
+باشد که مولفه‌ها به طور یکنواخت (بدون کاستن از کلیت مساله) از بازه
+$[0,\ 3]$
+انتخاب شده‌اند و بیضی تحت یک دوران به اندازه
+$\theta$
+درجه قرار گرفته باشد. پس هر بیضی نمونه‌گیری شده مطابق با فرض مساله، به صورت زیر به شکل یکتا در صفحه قرار می‌گیرد:
+
+\begin{center}
+$
+\begin{cases}
+C := (C_X,\ C_Y) \sim U[0, 3]^2 & \text{مختصات مرکز بیضی} \\
+\theta \sim U[0,\pi] & \text{زاویه بین شعاع به طول $\alpha$ با محور افقی} 
+\end{cases}
+$
+\end{center}
+
+اگر معادله نقاط بیضی به صورت زیر باشد:
+
+\begin{center}
+$
+f:\ ax^2 + bxy + cy^2 -d = 0
+$
+\end{center}
+
+آنگاه دورترین خطوط افقی و عمودی که با این بیضی تلاقی می‌کنند، نقاطی است که در آنها مشتقات جزیی
+$f$
+نسبت به
+$x$
+و
+$y$
+برابر با صفر است. یعنی:
+
+\begin{center}
+$
+\dfrac{\partial f}{\partial x} = 2ax + by = 0 
+$
+
+$
+\implies x^* = \dfrac{-b}{2a}y^*
+$
+
+$
+\implies a(\dfrac{b^2}{4a^2}){y^*}^2 + b(\dfrac{-b}{2a}){y^*}^2 + c{y^*}^2 - d = 0
+$
+
+$
+\implies {y^*}^2 \big( \dfrac{b^2}{4a} - \dfrac{b^2}{2a} + c \big) = d
+$
+
+$
+\implies {y^*}^2 (c - \dfrac{b^2}{4a}) = d
+$
+
+$
+\implies {y^*}^2 = \dfrac{4ad}{4ac - b^2}
+$
+\end{center}
+
+پس به طریقی مشابه، بعد از یافتن فرمول مشابهی برای مرزی‌ترین نقاط افقی بیضی مذکور، کلیه نقاط بیضی درون محدوده
+
+\begin{center}
+$
+C_X \pm \sqrt{\dfrac{4cd}{4ac-b^2}}, \quad
+C_Y \pm \sqrt{\dfrac{4ad}{4ac-b^2}}
+$
+\end{center}
+
+قرار می‌گیرند.
+
+اکنون توجه می‌کنیم که معادله نقاط بیضی هنگامی که زاویه شعاع به طول
+$\alpha$
+آن با محور افقی برابر با صفر باشد، به صورت زیر است:
+
+\begin{center}
+$
+\dfrac{X^2}{\alpha ^2} + \dfrac{Y^2}{\beta ^2} = 1
+$
+\end{center}
+
+اما معادله نقاط بیضی پس از دوران به اندازه
+$\theta$
+عبارت است از:
+$R_{\theta} 
+\begin{bmatrix}
+X \\ Y
+\end{bmatrix}
+ = \begin{bmatrix}
+ X_{\theta} \\ Y_{\theta}
+ \end{bmatrix}
+ $
+ که در آن
+ $R_{\theta}$
+ ماتریس دو بعدی دوران مرسوم است. در نتیجه نقاط صادق در بیضی دوران یافته در معادلات زیر صدق می‌کنند:
+ 
+\begin{center}
+$
+\begin{cases}
+X = \cos \theta X_{\theta} + \sin \theta Y_{\theta} \\
+Y = -\sin \theta X_{\theta} + \cos \theta Y_{\theta}
+\end{cases}
+$
+\end{center}
+
+که با جایگذاری در معادله اولیه، معادله بیضی دوران یافته به اندازه
+$\theta$
+به شکل زیر به دست می‌آید:
+
+\begin{center}
+$
+\dfrac{(\cos \theta X_{\theta} + \sin \theta Y_{\theta})^2}{\alpha ^2} + \dfrac{(-\sin \theta X_{\theta} + \cos \theta Y_{\theta})^2}{\beta ^2} = 1
+$
+\end{center}
+
+که اگر به فرم استاندارد مربعی معرفی شده در بالا آن را برگردانیم، عبارت است از:
+
+\begin{center}
+$
+\implies X_{\theta}^2(\beta ^2 \cos^2 \theta + \alpha^2 \sin^2 \theta) + 
+X_{\theta}Y_{\theta} (2\beta^2\sin \theta \cos \theta - 2\alpha^2 \sin \theta \cos \theta) + 
+Y_{\theta}^2 (\beta^2\sin^2 \theta + \alpha^2 \cos^2 \theta) - \alpha^2 \beta^2 = 0
+$
+\end{center}
+
+در نتیجه
+
+\begin{center}
+$
+\implies 4ac - b^2 = 4 (\beta^4\cos^2 \theta \sin^2 \theta + \beta^2\alpha^2 \cos^4 \theta + \alpha^2 \beta^2\sin^4 \theta + \alpha^4 \sin^2 \theta \cos^2 \theta) - 4\sin^2 \theta \cos^2 \theta (\beta^4 -2\beta^2\alpha^2 + \alpha^4)
+$
+
+$
+= 4 \alpha^2\beta^2 (\sin^4 \theta + \cos^4 \theta + 2\sin^2 \theta \cos^2 \theta) = 4\alpha^2 \beta^2
+$
+\end{center}
+
+که نتیجه می‌دهد:
+
+\begin{center}
+$
+X_{\theta, \max} = \sqrt{\alpha^2 \cos^2 \theta + \beta^2\sin^2 \theta}, \qquad
+Y_{\theta, \max} = \sqrt{\alpha^2 \sin^2 \theta + \beta^2\cos^2 \theta}
+$
+\end{center}
+
+پس به ازای
+$\theta$
+ثابت، تنها در صورتی بیضی مورد نظر با خطوط مشبکه تلاقی نمی‌کند که کاملا درون مستطیل به عرض
+$3-2Y_{\theta, \max}$
+و
+طول
+$3-2X_{\theta, \max}$
+هاشور خورده در شکل زیر قرار بگیرد.
+
+\bigbreak
+
+\begin{figure}[h]
+\begin{tikzpicture}[x=1cm, y=1cm, scale=1.5]
+    \draw[rotate around={30:(1.854,2.098)}] (1.854,2.098) ellipse (1.25cm and 0.75cm);
+    \node at (1.854,2.098) {$\times$};
+    \draw[rotate around={30:(2.854,1.098)},red] (2.854,1.098) ellipse (1.25cm and 0.75cm);
+    \node[red] at (2.854,1.098) {$\times$};
+    \draw[rotate around={30:(1.5,1)},green] (1.5,1) ellipse (1.25cm and 0.75cm);
+    \node[green] at (1.5,1) {$\times$};
+    \draw[thick] (0,0) -- (3,0);
+    \draw[thick] (3,0) -- (3,3);
+    \draw[thick] (3,3) -- (0,3);
+    \draw[thick] (0,3) -- (0,0);
+    \fill [gray,fill opacity=0.2] (1.145,0.901) rectangle (1.854,2.098);
+\end{tikzpicture}
+\centering
+\end{figure}
+
+اگر پیشامد قرار گرفتن بیضی در داخل یک مربع را
+$I_{\theta}$
+بنامیم، از آنچه در شکل بالا نشان داده شد به دست می‌آید که (با فرض برابر بودن طول ضلع هر مربع با مقدار
+$l$):
+
+\begin{center}
+$
+Pr[I_{\theta}\ |\ \theta] = \dfrac{1}{l^2} (l-2 X_{\theta, \max}) (l- 2Y_{\theta, \max})
+$
+\end{center}
+
+به دلیل تقارن موجود، مقادیر
+$\theta$
+را می‌توان به
+$[0, \dfrac{\pi}{2}]$
+محدود کرد. به کمک قانون احتمال کل داریم:
+
+\begin{center}
+$
+Pr[I] = \dfrac{2}{\pi}\int_{0}^{\frac{\pi}{2}} Pr[I_{\theta}\ |\ \theta]\, d\theta
+$
+\bigbreak
+$
+= \dfrac{2}{\pi} \int_{0}^{\frac{\pi}{2}} 1 - \dfrac{2}{l} (X_{\theta, \max} + Y_{\theta, \max}) + \dfrac{4}{l^2} X_{\theta, \max} Y_{\theta, \max} \, d\theta
+$
+\end{center}
+
+اما به کمک تابع انتگرال بیضوی
+$K(m)$
+با ضابطه زیر
+\cite{ellipk}،
+
+\begin{center}
+$
+K(m) := \int_{0}^{\frac{\pi}{2}} \sqrt{1-m\sin ^2(t)}\, dt
+$
+\end{center}
+
+می‌توان انتگرال‌های فوق را ساده‌سازی کرد:
+
+\begin{center}
+$
+\int_{0}^{\frac{\pi}{2}} X_{\theta, \max}\, d\theta
+= \int_{0}^{\frac{\pi}{2}} Y_{\theta, \max} \, d\theta
+= \int_{0}^{\frac{\pi}{2}} \sqrt{\alpha^2 \cos^2 \theta + \beta^2 \sin^2 \theta}\, d\theta
+= \alpha K(1-(\dfrac{\beta}{\alpha})^2)
+$
+\bigbreak
+$
+\int_{0}^{\frac{\pi}{2}} X_{\theta, \max}Y_{\theta, \max}\, d\theta 
+= \int_{0}^{\frac{\pi}{2}} \sqrt{\Big(\alpha^2 - \sin^2 \theta (\alpha^2 - \beta^2)\Big) \Big( \beta^2 + \sin^2 \theta (\alpha^2 - \beta^2) \Big)} \, d\theta 
+$
+\bigbreak
+$
+=\int_{0}^{\frac{\pi}{2}}\sqrt{\alpha^2 \beta^2 -(\alpha^2 - \beta^2)^2 (\sin^4 \theta - \sin^2 \theta}) \, d\theta
+=\int_{0}^{\frac{\pi}{2}}\sqrt{\alpha^2 \beta^2 +\dfrac{1}{4}(\alpha^2 - \beta^2)^2 \sin^2 2\theta} \, d\theta
+$
+\bigbreak
+$
+=\dfrac{1}{2}\int_{0}^{\frac{\pi}{2}}\sqrt{4\alpha^2 \beta^2 +(\alpha^2 - \beta^2)^2 \sin^2 \theta} \, d\theta
+= \dfrac{\alpha^2 + \beta^2}{2} K\Big( (\dfrac{\alpha^2 - \beta^2}{\alpha^2 + \beta^2})^2 \Big)
+$
+\end{center}
+
+و با جایگذاری در معادله اصلی داریم:
+
+\begin{center}
+$
+Pr[I] = 1 - \dfrac{8\alpha}{l\pi} K\Big( 1-(\dfrac{\beta}{\alpha})^2 \Big) + 
+\dfrac{4(\alpha^2 + \beta^2)}{l^2\pi} K\Big( (\dfrac{\alpha^2 - \beta^2}{\alpha^2 + \beta^2})^2 \Big)
+$
+\end{center}
+
+برای حالتی که بیضی مورد نظر یک دایره باشد نیز، داریم:
+
+\begin{center}
+$
+\alpha=\beta \implies Pr[I] = 1 - \dfrac{8\alpha}{l\pi}K(0) + \dfrac{8\alpha^2}{l^2\pi}K(0)
+\quad \overset{K(0)=\frac{\pi}{2}}{\implies} \quad
+Pr[I] = (1-\dfrac{2\alpha}{l})^2
+$
+\end{center}
+
+اکنون به مساله بر می‌گردیم. حالات زیر سوال شده بودند که مقدار هر یک را به دست آورده‌ایم:
+
+\begin{LTR}
+\begin{itemize}
+\item{
+$
+\alpha = \beta = 1:\
+Pr[I] = (1-\dfrac{2}{3})^2 = \dfrac{1}{9}
+$
+}
+\item{
+$
+\alpha=\dfrac{5}{4}, \beta=\dfrac{3}{4}\
+Pr[I] = 1 - \dfrac{10}{3\pi} K(\dfrac{16}{25}) + \dfrac{17}{18\pi} K(\dfrac{64}{289}) 
+$
+}
+\end{itemize}
+\end{LTR}
+
+به ازای بیضی با قطرهای
+$2.5$
+و
+$1.5$، مقدار به دست آمده به کمک شبیه‌سازی تقریبا برابر با
+$0.0907$
+است. نکته قابل توجه آنکه با وجود مساحت کمتر بیضی مذکور ($
+\dfrac{15}{16} \pi
+$)
+ نسبت به دایره واحد ($
+\pi
+$)،
+احتمال عدم تلاقی بیضی با مرز‌ها کمتر است.
+
+در شکل زیر نقاط مرکز بیضی‌های با قطرهای مشخص شده فوق، با یک دوران تصادفی در نظر گرفته شده‌اند و در صورتی که بیضی دوران یافته با مرزها تلاقی نکرده باشد، با رنگ آبی رنگ‌آمیزی شده‌اند.
+
+\begin{figure}[h]
+\subfloat[]{\includegraphics[width = 2in]{6.png}} 
+\subfloat[]{\includegraphics[width = 2in]{6_b.png}} 
+\label{6}
+\centering
+\end{figure}
+
+\end{حل}
+
+
+% ------------------------------------------------------
+% problem 7
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+\end{حل}
+
+
+% ------------------------------------------------------
+% problem 8
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+
+ماتریس انتقال فرآیند مارکف مساله به شکل زیر است:
+
+\begin{center}
+$
+P = 
+\begin{bmatrix}
+0 & \dfrac{1}{2} & 0& \dfrac{1}{2}\\
+\dfrac{1}{3} & 0 & \dfrac{1}{3} & \dfrac{1}{3}\\
+0& \dfrac{1}{2} & 0 & \dfrac{1}{2}\\
+\dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3} & 0\\
+\end{bmatrix}
+$
+\end{center}
+
+به این ترتیب اگر
+$\sigma^{(n)}$
+بردار احتمال حضور قدم‌زن تصادفی بعد از
+$n$
+گام در هر راس باشد، داریم
+
+\begin{center}
+$
+\begin{cases}
+\sigma^{(n)} = \sigma^{(n-1)}P = \sigma^{(0)}P^n & \qquad n \geq 1\\
+\sigma^{(0)} = (1, 0, 0, 0)
+\end{cases}
+$
+\end{center}
+
+می‌دانیم در درازمدت، بردار
+$\sigma^{(n)}$
+به توزیع پایای
+$\pi$
+میل می‌کند و در واقع تغییر زیادی نمی‌کند. پس از یک زمانی مثل
+$N$
+به بعد، احتمال حضور در راس
+$B$
+در گام
+$n\geq T$
+تقریبا برابر است با
+$\pi_2$.
+پس به طور متوسط با احتمال تقریبا
+$\pi_2$
+در یک لحظه تصادفی ولی به اندازه کافی طولانی، در راس
+$B$
+قرار داریم. پس به دنبال بردار
+$\pi$
+می‌گردیم.
+داریم:
+
+\begin{center}
+$
+\pi P = pi
+\implies \pi (P-I) = 0
+\implies (P^T-I)\pi^T = 0
+$
+\end{center}
+
+پس به دنبال برداری (با مجموع درایه‌های برابر با یک) هستیم که در کرنل ماتریس
+$P^T-I$
+قرار داشته باشد. به کمک عکلیات سطری مقدماتی، خواهیم داشت:
+
+\begin{center}
+$
+P^T-I
+=
+\begin{bmatrix}
+-1 & \dfrac{1}{3} & 0 & \dfrac{1}{3}\\
+\dfrac{1}{2} & -1 & \dfrac{1}{2} & \dfrac{1}{3}\\
+0 & \dfrac{1}{3} & -1 & \dfrac{1}{3}\\
+\dfrac{1}{2} & \dfrac{1}{3} & \dfrac{1}{2} & -1
+\end{bmatrix}
+\ \rightarrow \
+\begin{bmatrix}
+1 & -\dfrac{1}{3} & 0 & -\dfrac{1}{3}\\
+0 & -\dfrac{5}{6} & \dfrac{1}{2} & \dfrac{1}{2}\\
+0 & \dfrac{1}{3} & -1 & \dfrac{1}{3}\\
+0 & \dfrac{1}{2} & \dfrac{1}{2} & -\dfrac{5}{6}
+\end{bmatrix}
+\ \rightarrow \
+\begin{bmatrix}
+1 & 0 & \dfrac{1}{3} & -\dfrac{8}{9}\\
+0 & 1 & 1 & -\dfrac{5}{3}\\
+0 & 0 & -\dfrac{4}{3} & \dfrac{8}{9}\\
+0 & 0 & \dfrac{4}{3} & -\dfrac{8}{9}
+\end{bmatrix}
+\ \rightarrow \
+\begin{bmatrix}
+1 & 0 & 0 & -\dfrac{2}{3}\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & -\dfrac{2}{3}\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+$
+\end{center}
+
+که نتیجه می‌دهد:
+
+\begin{center}
+$
+\begin{cases}
+\pi_A - \dfrac{2}{3}\pi_D = 0\\
+\pi_B - \pi_D = 0\\
+\pi_C - \dfrac{2}{3}\pi_D = 0\\
+\pi_A + \pi_B + \pi_C + \pi_D = 1
+\end{cases}
+\qquad \implies \qquad
+\pi = (\dfrac{2}{10}, \dfrac{3}{10}, \dfrac{2}{10}, \dfrac{3}{10})
+$
+\end{center}
+
+پس به طور میانگین قدم‌زن تصادفی در
+$30\%$
+اوقات در راس
+$B$
+قرار دارد.
+
+\vspace*{1in}
+
+اکنون اگر یال‌های گراف را جهت‌دار در نظر بگیریم و یال‌های خروجی از
+$C$
+را حذف کنیم، بردار
+$\sigma_C^{(n)}$
+که مشابه قبل برای این زنجیر مارکف جدید تعریف شود، هم‌چنان احتمال حضور در راس‌ها را در گام
+$n$ام
+قدم‌زن تصادفی نمایش می‌دهد. با این نکته که اگر قدم‌زن به راس
+$C$
+وارد شود، دیگر امکان خروج از آن را ندارد. پس متغیرهای تصادفی اندیکاتور زیر را تعریف می‌کنیم:
+
+\begin{center}
+$
+I_n :=
+\begin{cases}
+1 & \qquad \text{قدم‌زن در لحظه $n$ام در راس $C$ قرار دارد}\\
+0 & \qquad \text{در غیر این صورت}
+\end{cases}
+$
+\end{center}
+
+هم‌چنین پیشامد آنکه تا لحظه
+$n$ام
+راس
+$C$
+را دیده باشیم برابر با
+$U_n$
+تعریف می‌کنیم. داریم:
+
+\begin{center}
+$
+Pr[U_n] = Pr[I_0 = 1] + \sum_{i=1}^{n}Pr[I_i=1\ |\ I_{i-1}=0]
+= \sum_{i=1}^{n} Pr[I_i=1\ |\ I_{i-1}=0]
+= \sum_{i=1}^{n} (\sigma_C^{(i)})_3 - (\sigma_C^{(i-1)})_3
+= (\sigma_C^{(n)})_3
+$
+\bigbreak
+$
+= \sigma_C^{(0)} P_C^n \begin{pmatrix}
+0 & 0 & 1 & 0
+\end{pmatrix}^T
+= \begin{pmatrix}
+1 & 0 & 0 & 0
+\end{pmatrix}
+P_C^n \begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix}
+$
+\end{center}
+
+پس ابتدا چندجمله‌ای مشخصه ماتریس
+$P_C$
+را به دست می‌آوریم:
+
+\begin{center}
+$
+P_C = 
+\begin{bmatrix}
+0 & \dfrac{1}{2} & 0& \dfrac{1}{2}\\
+\dfrac{1}{3} & 0 & \dfrac{1}{3} & \dfrac{1}{3}\\
+0& 0 & 1 & 0\\
+\dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3} & 0\\
+\end{bmatrix}
+\qquad \implies \qquad \det(P_C - \lambda I) = \lambda^4 - \lambda^3 - \dfrac{4}{9}\lambda^2 + \dfrac{1}{3}\lambda + \dfrac{1}{9}
+$
+\end{center}
+
+لذا مقادیر ویژه ماتریس
+$P_C$
+عبارتند از
+
+
+\begin{center}
+$
+\lambda_1 = 1,\quad 
+\lambda_2 = -\dfrac{1}{3},\quad 
+\lambda_3 = \dfrac{1 + \sqrt{13}}{6},\quad 
+\lambda_4 = \dfrac{1 - \sqrt{13}}{6}
+$
+\end{center}
+
+اما از آنجا که یک ترکیب خطی از این مقادیر، همان
+$Pr[U_n]$
+خواهد بود، سعی می‌کنیم ضرایب ترکیب خطی را با تشکیل دستگاه معادلات خطی به دست آوریم:
+
+\begin{center}
+$
+Pr[U_n] := a\lambda_1^n + b\lambda_2^n + c\lambda_3^n + d\lambda_4^n
+$
+\bigbreak
+$
+\begin{cases}
+Pr[U_0] = 0 \\
+Pr[U_1] = 0 \\
+Pr[U_2] = \dfrac{1}{3}\\
+Pr[U_3] = \dfrac{4}{9}
+\end{cases}
+\qquad \implies \qquad
+\begin{bmatrix}
+1 & 1 & 1 & 1\\
+1 & \lambda_2 & \lambda_3 & \lambda_4\\
+1 & \lambda_2^2 & \lambda_3^2 & \lambda_4^2\\
+1 & \lambda_2^3 & \lambda_3^3 & \lambda_4^3\\
+\end{bmatrix}
+\begin{bmatrix}
+a \\ b \\ c \\ d
+\end{bmatrix} = 
+\begin{bmatrix}
+0 \\ 0 \\ \dfrac{1}{3} \\ \dfrac{4}{9}
+\end{bmatrix}
+$
+\end{center}
+
+با حل دستگاه خطی فوق به دست می‌آید:
+
+\begin{center}
+$
+Pr[U_n] = 1 + (\dfrac{-5\sqrt{13} - 13}{26})(\dfrac{1 + \sqrt{13}}{6})^n +  (\dfrac{5\sqrt{13} - 13}{26})(\dfrac{1 - \sqrt{13}}{6})^n
+$
+\end{center}
+
+پس احتمال آنکه تا لحظه
+$n$ام
+راس
+$C$
+را نبینیم برابر است با
+$1-Pr[U_n]$
+که مقدار دقیق آن از رابطه بالا قابل محاسبه است.
+
+
+\end{حل}
+
+% ------------------------------------------------------
+% problem 9
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+
+اگر امید ریاضی زمانی که طول می‌کشد تا از راس
+$X$
+به
+$Y$
+برسیم را با
+$T_{X,Y}$
+نشان دهیم، روابط زیر نتیجه می‌شوند:
+
+\begin{center}
+$
+\begin{cases}
+T_{A,B} = p\times 1 + (1-p)\times (T_{C, B}+1) & = 1 + (1-p)T_{C,B}\\
+\dots\\
+T_{C,B} = (1-r)\times 1 + r\times (T_{A, B}+1) & = 1 + rT_{A,B}\\
+\end{cases}
+$
+\end{center}
+
+با مرتب کردن این معادلات خطی، معادله ماتریسی زیر را خواهیم داشت:
+
+\begin{center}
+$
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & p-1\\
+0 & 1 & 0 & -q & 0 & 0\\
+0 & 0 & 1 & 0 & -p & 0\\
+0 & r-1 & 0 & 1 & 0 & 0\\
+0 & 0 & q-1 & 0 & 1 & 0\\
+-r & 0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+T_{A, B}\\
+T_{B, A}\\
+T_{A, C}\\
+T_{C, A}\\
+T_{B, C}\\
+T_{C, B}
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+ 1 \\ 1\\ 1\\ 1\\ 1\\ 1
+ \end{bmatrix}
+$
+\end{center}
+
+با حل دستگاه فوق به کمک روش سطری مقدماتی نتیجه می‌شود:
+
+\begin{center}
+$
+(T_{A, B}, T_{B, C}, T_{C, A}) = \Big( 
+\dfrac{2 - p}{1-r+rp},\ 
+\dfrac{2-q}{1-p+pq},\ 
+\dfrac{2-r}{1-q+qr}
+\Big)
+$
+\bigbreak
+$
+(T_{A,C}, T_{C,B}, T_{B,A}) = \Big(
+\dfrac{1+p}{1-p+pq},\ 
+\dfrac{1+r}{1-r+rp},\ 
+\dfrac{1+q}{1-q+qr}
+\Big)
+$
+\end{center}
+
+پس اختلاف میانگین زمانی که طول می‌کشد تا یک دور مثلثاتی بزنیم با میانگین زمانی که طول می‌کشد تا یک دور در خلاف جهت مثلثاتی بزنیم، برابر است با
+
+\begin{center}
+$
+T_{diff}=
+\dfrac{1-r-p}{1-r+rp} + 
+\dfrac{1-p-q}{1-p+pq} +
+\dfrac{1-r-q}{1-q+qr}
+$
+\end{center}
+
+اگر کمیت
+$T_{diff}$
+منفی باشد، یعنی به طور متوسط زمانی که طول می‌کشد تا یک دور مثلثاتی بزنیم، کمتر است. پس در درازمدت در جهت مثلثاتی خواهیم چرخید.
+
+\begin{center}
+$
+\begin{cases}
+T_{diff} < 0 & \text{در درازمدت در جهت مثلثاتی خواهیم چرخید.}\\
+T_{diff} = 0 & \text{در درازمدت در هیچ جهتی نمی‌چرخیم.}\\
+T_{diff} > 0 & \text{در درازمدت در خلاف جهت مثلثاتی خواهیم چرخید.}
+\end{cases}
+$
+\end{center}
+
+برای یافتن سرعت نیز، فرض کنیم
+$T^+ := T_{A,B} + T_{B,C} + T_{C,A}$
+و
+$T^- := T_{A,C} + T_{C,B} + T_{B,A}$.
+در این صورت در یک واحد زمانی به طور متوسط،
+$\dfrac{1}{T^+}$
+از کمان
+$[0,\ 2\pi]$
+را در جهت مثلثاتی طی کرده‌ایم و
+$\dfrac{1}{T^-}$
+از کمان فوق را در خلاف جهت مثلثاتی طی کرده‌ایم. پس به طور میانگین در هر واحد زمانی به میزان
+$\dfrac{1}{T^+} - \dfrac{1}{T^-}$
+از کمان
+$[0,\ 2\pi]$
+را در جهت مثلثاتی طی کرده‌ایم. این مقدار طبق تعریف، سرعت حرکت در جهت مثلثاتی خواهد بود (توجه می‌کنیم که می‌تواند مقادیر آن مثبت یا منفی شود).
+
+\begin{center}
+$
+V^+ 
+=\dfrac{T^- - T^+}{T^+ T^-}
+= -\dfrac{T_{diff}}{T^+ T^-}
+$
+\end{center}
+
+\end{حل}
+
+% ------------------------------------------------------
+% problem 10
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+
+اگر زمانی که طول می‌کشد تا تعداد افراد مبتلا از
+$k-1$
+نفر به
+$k$
+نفر برسد را
+$T_k$
+بنامیم و احتمال ابتلای یک فرد جدید را زمانی که تعداد مبتلایان
+$k-1$
+نفر است،
+$p_k$
+بنامیم،  داریم:
+
+\begin{center}
+$
+p_k = p\times \dfrac{
+\begin{pmatrix}
+k-1 \\ 1
+\end{pmatrix}
+\begin{pmatrix}
+n-k+1 \\ 1
+\end{pmatrix}
+}{
+\begin{pmatrix}
+n \\ 2
+\end{pmatrix}
+} 
+= p\dfrac{2(k-1)(n-k+1)}{n(n-1)}, \qquad k\geq 2
+$
+\bigbreak
+$
+E[T_k] = \sum_{i=1}^{\infty} i p_k(1-p_k)^{i-1}
+= p_k \times \dfrac{d (\sum_{i=0}^{\infty}x^i)}{d x}\Big|_{1-p_k}
+= p_k \times \dfrac{1}{(1-x)^2}\Big|_{x=1-p_k}
+= \dfrac{1}{p_k}
+$
+\end{center}
+
+پس امید ریاضی مجموع زمان لازم برای ابتلای همه افراد شهر برابر است با
+
+\begin{center}
+$
+E[T_2 + \dots + T_n] = \sum_{k=2}^{n}  E[T_k] = \sum_{k=2}^{n} \dfrac{1}{p_k} = \sum_{k=2}^{n} \dfrac{\begin{pmatrix}
+n\\ 2
+\end{pmatrix}}{
+p (k-1) (n-k+1)
+}
+$
+\bigbreak
+$
+= \dfrac{\begin{pmatrix}
+n\\2
+\end{pmatrix}
+}{p} \sum_{k=2}^{n}\dfrac{1}{(k-1)(n-k+1)}
+= \dfrac{\begin{pmatrix}
+n\\2
+\end{pmatrix}
+}{p} \sum_{k=2}^{n}\dfrac{1}{n} \Big( \dfrac{1}{k-1} + \dfrac{1}{n-k+1}\Big)
+= \dfrac{n-1}{p} \sum_{k=1}^{n-1} \dfrac{1}{k}
+= \theta (\dfrac{1}{p} n^2 \log n)
+$
+\end{center}
+
+
+\end{حل}
+
+% ------------------------------------------------------
+% problem 11
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+\end{حل}
+% ------------------------------------------------------
+% problem 12
+% ------------------------------------------------------
+\newpage
+\begin{prob}
+\end{prob}
+
+\begin{حل}
+\end{حل}
+
+
+
+
+
+
+
+
 
 
 
